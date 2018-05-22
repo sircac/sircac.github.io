@@ -1,0 +1,236 @@
+<!DOCTYPE HTML>
+<!--
+  Helios 1.5 by HTML5 UP
+  html5up.net | @n33co
+  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>Agustín Sánchez Losa</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <!-- <meta name="description" content="What is this for? Is for Google"> -->
+    <!-- <meta name="keywords" content="WTF,bullshit,..."> -->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.dropotron.min.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="js/skel-panels.min.js"></script>
+    <script src="js/init.js"></script>
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="src/katex/katex.min.css">
+    <script src="src/katex/katex.min.js"></script>
+    <script src="src/katex/contrib/auto-render.min.js"></script>
+
+    <!-- Chance, a very complete random generator... -->
+    <script src="src/chance.min.js"></script>
+    <script type="text/javascript">//This is for associate a pseudorandom gliberish link for a given token...
+      // function checkAndSend(theLink){
+      //   var xmlhttp = null;
+      //   if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+      //     xmlhttp=new XMLHttpRequest();
+      //   }else{// code for IE6, IE5
+      //     xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      //   }
+      //   xmlhttp.onreadystatechange=function(){
+      //       alert(theLink);
+      //       if(xmlhttp.responseText){//if (xmlhttp.readyState==4 && xmlhttp.status==200){
+      //         alert('text'+xmlhttp.responseText);
+      //         //location.reload();
+      //         location.href=theLink;
+      //       }//else alert('sorry, wrong pass...');
+      //       //location.href=theLink;
+      //   }
+      //   xmlhttp.open("GET",theLink,false);
+      //   xmlhttp.send();
+      // }
+      var preAddress  = '.';
+      var posAddress  = 'index';
+      var typeAddress = 'html';
+      var encryptAddress = true;
+      function sendTo(){
+        var address = document.getElementById("pass").value;
+        if(address.length>0){
+          var chanceAddress = new Chance(address);
+          var newAddress = null;
+          if(encryptAddress) newAddress = chanceAddress.string({length: chanceAddress.integer({min: address.length+25, max: address.length+35}), pool: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'});
+          else newAddress = address;
+          var finalAddress = preAddress+'/'+newAddress+'/'+posAddress+'.'+typeAddress;
+          location.href=finalAddress;
+          //setTimeout(function(){ checkAndSend(finalAddress);}, 100);
+          //alert('ok:\n'+finalAddress);
+        }
+        return false;
+      }
+    </script>
+
+    <!-- <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css"> -->
+    <style>
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 300;
+        /* src: local('Source Sans Pro Light'), local('SourceSansPro-Light'); */
+        src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(./src/SourceSansPro-300.woff2) format('woff2'), url(./src/SourceSansPro-300.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        /* src: local('Source Sans Pro'), local('SourceSansPro-Regular'); */
+        src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(./src/SourceSansPro-400.woff2) format('woff2'), url(./src/SourceSansPro-400.woff) format('woff');
+      }
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        /* src: local('Source Sans Pro Semibold'), local('SourceSansPro-Semibold'); */
+        src: local('Source Sans Pro Semibold'), local('SourceSansPro-Semibold'), url(./src/SourceSansPro-600.woff2) format('woff2'), url(./src/SourceSansPro-600.woff) format('woff');
+      }
+    </style>
+    <style>
+      /* body {font-family: sans-serif; background-color: #252525; color: #ddd; text-align: center; font-size: 1.0em;} */
+      p {line-height: 2;}
+      a {color: #ddd;}
+      a.box {background-color: #222; color: #d5d5d5; padding: .1em .35em .2em .35em; border: .1em solid #aaa; text-decoration: none;}
+      a.box:hover {background-color: #454545;}
+      /* hr {border: none; padding: 0; border-top: 1px solid #aaa;} */
+      hr.dashed {border-top: 1px dashed #aaa;}
+      hr.dotted {border-top: 1px dotted #aaa;}
+      table {margin: 1em; margin-left: auto; margin-right: auto; background-color: #333; padding: .5em;}
+      table caption {padding: .1em .35em .2em .35em;}
+      table, th, td, tr {border: .1em solid #aaa; border-collapse: collapse; align: center; text-align: center;}
+      th, td {padding: .1em .35em .2em .35em;}
+      tr {border: .0em solid #aaa;}
+      th {background-color: #555; color: #e5e5e5;}
+      table.bands th, table.bands tr, table.bands td {border: none;}
+      table.bands tr:nth-child(even) {background-color: #252525;}
+      table.bands tr:nth-child(odd) {background-color: #353535;}
+      table.bands.lines th {border: .1em dotted #aaa;}
+      /*table.bands.lines tr {border: .1em dotted #aaa;}*/
+      table.bands.lines td {border: none; border-left: .1em dotted #aaa; border-right: .1em dotted #aaa;}
+      table.invisible, table.invisible th, table.invisible td, table.invisible tr {margin: 1em; margin-left: auto; margin-right: auto; border: none; padding: .5em;}
+    </style>
+
+    <style>
+      .pass {
+        vertical-align: middle;
+        height        : 1.2em;
+        line-height   : 1.2em;
+        background    : none;
+        outline       : none;
+        color         : #FFF;
+        margin        : 0;
+        padding       : 0;
+      }
+
+      input.pass {
+        margin        : -9px 0px -9px 0px;
+        border        : 1px solid #AAA;
+        border-radius : 5px;
+        width         : 123px;
+        text-indent   : 0.3em;
+        display       : inline;
+      }
+      input.pass:focus {
+        background    : rgba(0,0,0,.1);
+      }
+
+      button.pass {
+        margin        : -1.4em 0px -1.4em 0px;
+        padding       : 0px 5px 0px 5px;
+        border        : none;
+        font-size     : 1.2em;
+        cursor        : pointer;
+      }
+      button.pass:focus,button.pass:hover{outline:none;}
+      button.pass:after {/* &ocir; -> \0229A ; &rang; -> \027E9 */
+        content: "\029BE";
+        /* content: "\0229A"; */
+        /* content: "\0229A \027E9"; */
+        /* content: "\000A0 \027E9 \000A0"; */
+        /* content: "\027E9"; */
+        /* content: "\029C2"; */
+        /* content: "\029C1"; */
+      }
+
+      div.pass {
+        position    :absolute;
+        margin-right:10%;
+        margin-left :10%;
+        display     :table;
+        width       :80%;
+        top         :50%;
+      }
+
+      body {
+        background:#222;
+        color     :#FFF;
+        text-align:center;
+      }
+    </style>
+  </head>
+  <body class="homepage">
+
+    <!-- Header -->
+      <div id="header">
+
+        <!-- Nav -->
+          <nav id="nav">
+            <ul>
+              <li><a href="cv/asl_cv.pdf">CV (PDF)</a></li>
+              <li><a href="http://antaresvalencia.ific.uv.es/AgustinSanchezLosaMSciThesis/">MSci Thesis</a></li>
+              <li><a href="http://antaresvalencia.ific.uv.es/AgustinSanchezLosaPhDThesis/">PhD Thesis (unfinished)</a></li>
+              <li>ひみつ</li>
+              <li>A very looong entry</li>
+              <li>More entries</li>
+              <li>Entries a go go!</li>
+              <li><a href="http://antaresvalencia.ific.uv.es/AgustinSanchezLosaPhDThesis/">Charts &amp; Tools</a></li>
+              <li><form onsubmit="return sendTo();"><input class="pass" type="password" name="pass" id="pass" autofocus><button class="pass" type="button" onclick="sendTo();"></button></form></li><!-- &ocir;&rang; -->
+            </ul>
+          </nav>
+
+        <!-- Inner -->
+          <div class="inner">
+            <header>
+              <h1>Agust&iacute;n <strong style="color:white;">S&aacute;nchez Losa</strong></h1>
+              <hr />
+              <span class="byline">A human being... or so<br><br>\(e^{-i\pi}-1=0\)<br>\(\alpha\beta\gamma\)</span>
+            </header>
+            
+            <footer>
+              <a href="#banner" class="button circled scrolly">Start</a>
+            </footer>
+            
+          </div>
+
+      </div>
+
+
+    <script src="src/URI.min.js"></script>
+    <script type="text/javascript">//This is to made possible a .../pass.html?pass=code
+      var ops = URI(document.URL).query(true);
+      var query = false;
+      var askedEncryption = false;
+      for (var key in ops) {
+        if (ops.hasOwnProperty(key)) {
+          if(key=="pass"){
+            //alert(ops[key]);
+            document.getElementById("pass").value = ops[key];
+            query = true;
+          }
+          else if(key=="pre")     preAddress = ops[key];
+          else if(key=="pos")     posAddress = ops[key];
+          else if(key=="type")    typeAddress = ops[key];
+          else if(key=="encrypt") askedEncryption = true;
+        }
+      }
+      if(!askedEncryption) encryptAddress = false;
+      if(query) sendTo();
+    </script>
+
+    <script>
+      renderMathInElement(document.body);
+    </script>
+  </body>
+</html>

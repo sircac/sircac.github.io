@@ -7,23 +7,118 @@
 <html>
   <head>
     <title>Agustín Sánchez Losa</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css" />
-    <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.dropotron.min.js"></script>
     <script src="js/skel.min.js"></script>
     <script src="js/skel-panels.min.js"></script>
     <script src="js/init.js"></script>
+
+    <link rel="stylesheet" href="src/katex/katex.min.css">
+    <script src="src/katex/katex.min.js"></script>
+    <script src="src/katex/contrib/auto-render.min.js"></script>
+
+    <script src="src/chance.min.js"></script>
+    <script type="text/javascript">
+      // function checkAndSend(theLink){
+      //   var xmlhttp = null;
+      //   if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+      //     xmlhttp=new XMLHttpRequest();
+      //   }else{// code for IE6, IE5
+      //     xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+      //   }
+      //   xmlhttp.onreadystatechange=function(){
+      //       alert(theLink);
+      //       if(xmlhttp.responseText){//if (xmlhttp.readyState==4 && xmlhttp.status==200){
+      //         alert('text'+xmlhttp.responseText);
+      //         //location.reload();
+      //         location.href=theLink;
+      //       }//else alert('sorry, wrong pass...');
+      //       //location.href=theLink;
+      //   }
+      //   xmlhttp.open("GET",theLink,false);
+      //   xmlhttp.send();
+      // }
+      var preAddress  = '.';
+      var posAddress  = 'index';
+      var typeAddress = 'html';
+      function sendTo(){
+        var address = document.getElementById("pass").value;
+        if(address.length>0){
+          var chanceAddress = new Chance(address);
+          var newAddress = chanceAddress.string({length: chanceAddress.integer({min: address.length+25, max: address.length+35}), pool: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'});
+          var finalAddress = preAddress+'/'+newAddress+'/'+posAddress+'.'+typeAddress;
+          location.href=finalAddress;
+          //setTimeout(function(){ checkAndSend(finalAddress);}, 100);
+          //alert('ok:\n'+finalAddress);
+        }
+        return false;
+      }
+    </script>
+
     <noscript>
-      <link rel="stylesheet" href="css/skel-noscript.css" />
-      <link rel="stylesheet" href="css/style.css" />
-      <link rel="stylesheet" href="css/style-desktop.css" />
-      <link rel="stylesheet" href="css/style-noscript.css" />
+      <link rel="stylesheet" href="css/skel-noscript.css">
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/style-desktop.css">
+      <link rel="stylesheet" href="css/style-noscript.css">
     </noscript>
     <!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
+    <style>
+      .pass {
+        vertical-align: middle;
+        height        : 1.2em;
+        line-height   : 1.2em;
+        background    : none;
+        outline       : none;
+        color         : #FFF;
+      }
+
+      input.pass {
+        margin        : -9px 0px -9px 0px;
+        border        : 1px solid #AAA;
+        border-radius : 5px;
+        width         : 123px;
+        text-indent   : 0.3em;
+      }
+      input.pass:focus {
+        background    : rgba(0,0,0,.1);
+      }
+
+      button.pass {
+        margin        : -1.4em 0px -1.4em 0px;
+        padding       : 0px 5px 0px 5px;
+        border        : none;
+        font-size     : 1.2em;
+        cursor        : pointer;
+      }
+      button.pass:focus,button.pass:hover{outline:none;}
+      button.pass:after {/* &ocir; -> \0229A ; &rang; -> \027E9 */
+        content: "\029BE";
+        /* content: "\0229A"; */
+        /* content: "\0229A \027E9"; */
+        /* content: "\000A0 \027E9 \000A0"; */
+        /* content: "\027E9"; */
+        /* content: "\029C2"; */
+        /* content: "\029C1"; */
+      }
+
+      div.pass {
+        position: absolute;
+        margin-right: 10%;
+        margin-left: 10%;
+        display:table;
+        width  :80%;
+        top    :50%;
+      }
+
+      body {
+        background:#222;
+        text-align:center;
+      }
+    </style>
   </head>
   <body class="homepage">
 
@@ -33,7 +128,8 @@
         <!-- Nav -->
           <nav id="nav">
             <ul>
-              <li><a href="index.html">Home</a></li>
+              <li><a href="cv/asl_cv.pdf">CV (PDF)</a></li>
+              <!--<li><a href="index.html">Home</a></li>-->
               <!--<li>
                 <span>Dropdown</span>
                 <ul>
@@ -55,17 +151,17 @@
               <!--<li><a href="serendipity/index.html">Serendipity</a></li>-->
               <!--<li><a href="cv/index.html">CV</a></li>-->
               <li><a href="http://antaresvalencia.ific.uv.es/AgustinSanchezLosaMSciThesis/">MSci Thesis</a></li>
-              <li><a href="http://antaresvalencia.ific.uv.es/AgustinSanchezLosaPhDThesis/">PhD Thesis</a></li>
-              <li><a href="cv/asl_cv.pdf">CV (PDF)</a></li>
+              <li><a href="http://antaresvalencia.ific.uv.es/AgustinSanchezLosaPhDThesis/">PhD Thesis (unfinished)</a></li>
+              <li><form onsubmit="return sendTo();"><input class="pass" type="password" name="pass" id="pass" autofocus><button class="pass" type="button" onclick="sendTo();"></button></form></li><!-- &ocir;&rang; -->
             </ul>
           </nav>
-
+            
         <!-- Inner -->
           <div class="inner">
             <header>
               <h1>Agust&iacute;n <strong style="color:white;">S&aacute;nchez Losa</strong></h1>
               <hr />
-              <span class="byline">A human being... or so</span>
+              <span class="byline">A human being... or so<br><br>\(e^{-i\pi}-1=0\)<br>\(\alpha\beta\gamma\)</span>
             </header>
             <!--
             <footer>
@@ -75,9 +171,9 @@
           </div>
 
       </div>
-
+      
     <!-- Banner -->
-
+    
       <div id="banner">
         <header>
           <h3>Under construction...</h3>
@@ -88,13 +184,13 @@
           Built on <a href="http://skeljs.org">skelJS</a> and released under the <a href="http://html5up.net/license/">CCA</a> license.
         </span>-->
       </div>
-
+    
 
     <!-- Footer -->
       <div id="footer">
         <div class="container">
           <div class="row">
-
+            
             <!-- Tweets -->
             <!--
               <section class="4u">
@@ -205,7 +301,7 @@
                 </div>
               </section>
             -->
-
+            
             <!-- Tweets -->
             <!--
               <section class="4u">
@@ -279,7 +375,7 @@
           <hr />
           <div class="row">
             <div class="12u">
-
+              
               <!-- Contact -->
               <!--
                 <section class="contact">
@@ -297,7 +393,7 @@
                   </ul>
                 </section>
               -->
-
+              
               <!-- Copyright -->
                 <div class="copyright">
                   <ul class="menu">
@@ -305,12 +401,35 @@
                     <li>Base design: <a href="http://html5up.net/">HTML5 UP</a></li>
                   </ul>
                 </div>
-
+              
             </div>
-
+          
           </div>
         </div>
       </div>
 
+
+    <script src="src/URI.min.js"></script>
+    <script type="text/javascript">//This is to made possible a .../pass.html?pass=code
+      var ops = URI(document.URL).query(true);
+      var query = false;
+      for (var key in ops) {
+        if (ops.hasOwnProperty(key)) {
+          if(key=="pass"){
+            //alert(ops[key]);
+            document.getElementById("pass").value = ops[key];
+            query = true;
+          }
+          else if(key=="pre")  preAddress = ops[key];
+          else if(key=="pos")  posAddress = ops[key];
+          else if(key=="type") typeAddress = ops[key];
+        }
+      }
+      if(query) sendTo();
+    </script>
+
+    <script>
+      renderMathInElement(document.body);
+    </script>
   </body>
 </html>
